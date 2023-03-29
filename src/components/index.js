@@ -1,9 +1,22 @@
-import React from 'react'
+import Demo from './Demo'
+import "./style/style.css"
+import {SearchProvider} from "../context/SearchContext";
+import { WeatherProvider } from '../context/WeatherContext';
+import Search from "./Search";
+import Content from './Content';
 
-function index() {
+function Index() {
+
+
   return (
-    <div>index</div>
+    <SearchProvider>
+      <WeatherProvider>
+      <Search/>
+      <Demo/>
+      <Content/>
+      </WeatherProvider>
+    </SearchProvider>
   )
 }
 
-export default index
+export default Index

@@ -1,11 +1,11 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import Index from './components';
 
 function App() {
 
   return (
-    <div className="App">
-      <button className='btn btn-danger'>Gönder</button>
+    <div className="container">
+      <Index/>
     </div>
   );
 }
