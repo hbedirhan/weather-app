@@ -18,7 +18,7 @@ const Location = () => {
             navigator.geolocation.getCurrentPosition(position => {
                 let lat = position.coords.latitude;
                 let lon = position.coords.longitude;
-                axios(`http://api.weatherapi.com/v1/current.json?key=${api_key}&q=${lat},${lon}&aqi=no`)
+                axios(`https://api.weatherapi.com/v1/current.json?key=${api_key}&q=${lat},${lon}&aqi=no`)
                     .then(res => setLocationWeather(res.data))
             });
         }

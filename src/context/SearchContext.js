@@ -9,7 +9,7 @@ export const SearchProvider = ({ children }) => {
 
   const getWeather = async (search) => {
     try {
-      const response = await axios(`http://api.weatherapi.com/v1/current.json?key=b351440175a44f878d0123720233003&q=${search}&aqi=no`);
+      const response = await axios(`https://api.weatherapi.com/v1/current.json?key=b351440175a44f878d0123720233003&q=${search}&aqi=no`);
       const data = await response.data;
       setWeather(data);
     } catch (err) {
