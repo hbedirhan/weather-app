@@ -1,10 +1,10 @@
-import React, { useEffect, useContext } from 'react';
-import WeatherContext from '../context/WeatherContext';
+import { useContext } from 'react';
+import SearchContext from '../context/SearchContext';
 
 
 function Content() {
 
-    const { weather } = useContext(WeatherContext);
+    const { weather } = useContext(SearchContext);
     
     if (!weather) {
         return
@@ -14,37 +14,37 @@ function Content() {
             <div className='weather'>
                 <div className='top'>
                     <div>
-                        <p className='city'>{weather?.name}</p>
-                        <p className='weather-description'>{weather?.weather[0].description}</p>
+                        <p className='city'>{weather?.location.name}</p>
+                        <p className='weather-description'>{weather?.current.condition.text}</p>
                     </div>
-                    <img className='weather-icon' src={`icons/${weather?.weather[0].icon}.png`} alt="" />
+                    <img className='weather-icon' src={`${weather?.current.condition.icon}`} alt="" />
                 </div>
                 <div className='bottom'>
-                    <p className='temperature'>{Math.round(weather?.main.temp)}°C</p>
+                    <p className='temperature'>{Math.round(weather?.current.temp_c)}°C</p>
                 <div className='details'>
                     <div className='parameter-row'>
-                        <span className='parameter-label top'>Details</span>
+                        <span className='parameter-label'>Details</span>
                     </div>
                     <div className='parameter-row'>
                         <span className='parameter-label'>Feels Like</span>
-                        <span className='parameter-value'>{Math.round(weather?.main.feels_like)}°C</span>
+                        <span className='parameter-value'>{Math.round(weather?.current.feelslike_c)}°C</span>
                     </div>
                     <div className='parameter-row'>
                         <span className='parameter-label'>Wind</span>
-                        <span className='parameter-value'>{weather?.wind.speed} m/s</span>
+                        <span className='parameter-value'>{weather?.current.wind_mph} m/s</span>
                     </div>
                     <div className='parameter-row'>
                         <span className='parameter-label'>Humidity</span>
-                        <span className='parameter-value'>{weather?.main.humidity}%</span>
+                        <span className='parameter-value'>{weather?.current.humidity}%</span>
                     </div>
                     <div className='parameter-row'>
                         <span className='parameter-label'>Pressure</span>
-                        <span className='parameter-value'>{weather?.main.pressure} hPa</span>
+                        <span className='parameter-value'>{weather?.current.pressure_mb} hPa</span>
                     </div>
                 </div>
                 </div>
             </div>
-        </>
+    </>
     )
 }
 

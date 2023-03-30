@@ -1,10 +1,8 @@
 import { useState, useContext } from 'react'
 import SearchContext from '../context/SearchContext';
-import WeatherContext from '../context/WeatherContext';
 
 function Search() {
-    const { getLocation, location } = useContext(SearchContext);
-    const { getWeather } = useContext(WeatherContext);
+    const { getWeather } = useContext(SearchContext);
 
     const [search, setSearch] = useState("Search City");
 
@@ -14,10 +12,7 @@ function Search() {
 
     const clickOnButton = (e) => {
         e.preventDefault();
-        getLocation(search);
-        if (location) {
-            getWeather();
-        }
+        getWeather(search);
     }
 
 

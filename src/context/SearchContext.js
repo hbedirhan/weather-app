@@ -1,24 +1,25 @@
+import axios from 'axios';
 import { createContext, useState } from 'react';
 
 const SearchContext = createContext();
 
 export const SearchProvider = ({ children }) => {
 
-  const [location, setLocation] = useState();
+  const [weather, setWeather] = useState();
 
-  const getLocation = async (search) => {
+  const getWeather = async (search) => {
     try {
-      const response = await fetch(`http://dataservice.accuweather.com/locations/v1/cities/search?apikey=ptBzYlokiEPnXjp9Lk1AUuxl7dwAhNRd&q=${search}`);
-      const data = await response.json();
-      setLocation(data[0].GeoPosition);
+      const response = await axios(`http://api.weatherapi.com/v1/current.json?key=b351440175a44f878d0123720233003&q=${search}&aqi=no`);
+      const data = await response.data;
+      setWeather(data);
     } catch (err) {
       console.error(err);
     }
   };
 
   const values = {
-    getLocation,
-    location,
+    getWeather,
+    weather,
   };
 
   return (
